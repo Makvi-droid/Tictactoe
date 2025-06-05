@@ -1,31 +1,35 @@
-.cell{
-    height: 100px;
-    width: 100px;
-    border: 2px solid black;
-    line-height: 80px;
-    cursor: pointer;
-    font-size: 4.4rem;
-   
+*, *::after, *::before{
+    box-sizing: border-box;
+    overflow-x: hidden;
 }
 
-.game-container{
+:root{
+    --cell-size: 100px;
+    --mark-size: cal(var(--cell-size) * .9);
+}
+
+body{
+    margin: 0;
+}
+
+.board{
+    width: 100vw;
+    height: 100vh;
     display: grid;
-    grid-template-columns: repeat(3, auto);
-    width: 225px;
-    text-align: center;
-    margin: auto;
-    align-items: center;
     justify-content: center;
-    position: relative;
-    top: 1.9vh;
+    align-content: center;
+    justify-items: center;
+    align-items: center;
+    grid-template-columns: repeat(3, auto);
 }
 
-.container{
-    position: relative;
-    top: 25vh;
+.cell{
+    width: var(--cell-size);
+    height: var(--cell-size);
+    border: 1px solid black;
 }
 
-.container h2{
-    text-align: center;
+.cell.x::before,
+.cell.x::after{
+    content: '';
 }
-
