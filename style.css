@@ -31,10 +31,22 @@ body{
     justify-content: center;
     align-items: center;
     position: relative;
+    cursor: pointer;
+}
+
+.cell.x,
+.cell.circle{
+    cursor: not-allowed;
+}
+
+.board.x .cell:hover{
+
 }
 
 .cell.x::before,
-.cell.x::after{
+.cell.x::after,
+.board.x .cell:not(.x):not(.circle):hover::before,
+.board.x .cell:not(.x):not(.circle):hover::after{
     content: '';
     position: absolute;
     width: calc(var(--mark-size) * 0.15);
@@ -42,19 +54,32 @@ body{
     background-color: black;
 }
 
-.cell.x::before{
+.cell.x::before,
+.board.x .cell:not(.x):not(.circle):hover::before{
     transform: rotate(45deg);
 }
 
-.cell.x::after{
+.cell.x::after,
+.board.x .cell:not(.x):not(.circle):hover::after{
     transform: rotate(-45deg);
 }
 
-.cell.x::before,
-.cell.x::after{
+.cell.circle::before,
+.cell.circle::after{
     content: '';
     position: absolute;
+    border-radius: 50%;
+    background-color: black;
+}
+
+.cell.circle::before{
     width: var(--mark-size);
     height: var(--mark-size);
     background-color: black;
+}
+
+.cell.circle::after{
+    width: calc(var(--mark-size) * 0.7);
+    height: calc(var(--mark-size) * 0.7);
+    background-color: white;
 }
