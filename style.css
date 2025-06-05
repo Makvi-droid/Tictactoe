@@ -39,8 +39,14 @@ body{
     cursor: not-allowed;
 }
 
-.board.x .cell:hover{
+.board.x .cell:not(.x):not(.circle):hover::before,
+.board.x .cell:not(.x):not(.circle):hover::after{
+    background-color: lightgrey;
+}
 
+.cell.x::before,
+.cell.x::after{
+    background-color: black;
 }
 
 .cell.x::before,
@@ -51,7 +57,6 @@ body{
     position: absolute;
     width: calc(var(--mark-size) * 0.15);
     height: var(--mark-size);
-    background-color: black;
 }
 
 .cell.x::before,
