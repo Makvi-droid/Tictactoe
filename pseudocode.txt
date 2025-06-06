@@ -1,0 +1,24 @@
+Initialize game:
+   Create 3x3 board (array or HTML grid)
+   Set currentPlayer to 'X'
+   Set gameActive = true
+
+On cell click:
+   If cell is not empty or game is over:
+      Ignore click
+   Else:
+      Add currentPlayer symbol (X or O) to cell
+      Check if currentPlayer wins
+         If win:
+            Show "X wins" or "O wins"
+            Set gameActive = false
+      Else if all cells are filled:
+         Show "It's a draw"
+         Set gameActive = false
+      Else:
+         Switch currentPlayer
+
+On restart button click:
+   Clear board
+   Set currentPlayer to 'X'
+   Set gameActive = true
