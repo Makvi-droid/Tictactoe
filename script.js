@@ -4,6 +4,7 @@ const x_class = 'x';
 const circle_class = 'circle';
 const winnerMessageText = document.querySelector('[data-winner-message-txt]');
 const winnerMessage = document.getElementById('winner-message');
+const restartBtn = document.getElementById('restartBtn');
 
 let circleTurn;
 
@@ -20,15 +21,24 @@ const winningCombinations = [
 
 
 
+restartBtn.addEventListener('click', function(){
+    startGame();
+});
+
 function startGame(){
     circleTurn = false;
     cellElements.forEach(cell => {
+        cell.classList.remove(x_class);
+        cell.classList.remove(circle_class);
+        cell.removeEventListener('click', handleClick);
     cell.addEventListener('click', handleClick, {once: true});
 })
 setBoardHoverClass();
+winnerMessage.classList.remove('show');
 }
 
 startGame();
+
 
 function handleClick(e){
     const cell = e.target;
@@ -45,6 +55,8 @@ function handleClick(e){
     setBoardHoverClass();
     }
 }
+
+
 
 function isDraw(){
     return [...cellElements].every(cell =>{
