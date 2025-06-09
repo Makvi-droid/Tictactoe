@@ -37,14 +37,25 @@ function handleClick(e){
     if(checkWin(currentClass)){
          endGame(false);
     }
+    else if (isDraw()){
+        endGame(true);
+    }
+    else{
     swapTurn();
     setBoardHoverClass();
-    
+    }
+}
+
+function isDraw(){
+    return [...cellElements].every(cell =>{
+        return cell.classList.contains(x_class) ||
+        cell.classList.contains(circle_class)
+    })
 }
 
 function endGame(draw){
     if(draw){
-
+        winnerMessageText.innerText = 'Draw!';
     }
     else{
         winnerMessageText.innerText = `${circleTurn ? "O" : "X"} wins!`;
