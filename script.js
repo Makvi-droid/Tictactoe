@@ -2,6 +2,8 @@ const cellElements = document.querySelectorAll('[data-cell]');
 const board = document.getElementById('board');
 const x_class = 'x';
 const circle_class = 'circle';
+const winnerMessageText = document.querySelector('[data-winner-message-txt]');
+const winnerMessage = document.getElementById('winner-message');
 
 let circleTurn;
 
@@ -33,10 +35,22 @@ function handleClick(e){
     const currentClass = circleTurn ? circle_class : x_class;
     placeMark(cell, currentClass);
     if(checkWin(currentClass)){
-        alert('winner')
+         endGame(false);
     }
     swapTurn();
     setBoardHoverClass();
+    
+}
+
+function endGame(draw){
+    if(draw){
+
+    }
+    else{
+        winnerMessageText.innerText = `${circleTurn ? "O" : "X"} wins!`;
+    }
+
+    winnerMessage.classList.add('show');
 }
 
 function placeMark(cell, currentClass){
@@ -66,3 +80,4 @@ function checkWin(currentClass){
         })
     })
 }
+
